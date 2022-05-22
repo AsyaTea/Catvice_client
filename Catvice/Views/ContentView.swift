@@ -12,8 +12,8 @@ extension Color {
 }
 
 struct ContentView: View {
-    @StateObject var catManager = CatManager()
-    @StateObject var quoteManager = QuoteManager()
+    @ObservedObject var catManager : CatManager
+    @ObservedObject var quoteManager : QuoteManager
     @State private var dateNow = Date.now
 
     var body: some View {
@@ -28,9 +28,9 @@ struct ContentView: View {
                     Text("Catvice")
                         .font(.title)
                         .fontWeight(.semibold)
-                    Image("peepoClown")
-                        .resizable()
-                        .frame(width: 30, height: 30, alignment: .leading)
+//                    Image("peepoClown")
+//                        .resizable()
+//                        .frame(width: 30, height: 30, alignment: .leading)
                   
                 }
               
@@ -79,12 +79,12 @@ struct ContentView: View {
                             
                         }
                         Spacer()
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .fill(Color.white)                          
-                            DatePicker("Send me a notification at:", selection: $dateNow, displayedComponents: .hourAndMinute)                                                        }
-                        .frame(width: 350, height: 50, alignment: .center)
-                      
+//                        ZStack{
+//                            RoundedRectangle(cornerRadius: 10, style: .continuous)
+//                                .fill(Color.white)
+//                            DatePicker("Send me a notification at:", selection: $dateNow, displayedComponents: .hourAndMinute)                                                        }
+//                        .frame(width: 350, height: 50, alignment: .center)
+//
                         Spacer()
                     }
                     
@@ -102,7 +102,7 @@ struct ButtonView: View {
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .fill(.blue)
+                .fill(.orange)
             Text(text)
                 .foregroundColor(.white)
         }
@@ -119,6 +119,6 @@ struct EmptyView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(catManager: CatManager(), quoteManager: QuoteManager())
     }
 }

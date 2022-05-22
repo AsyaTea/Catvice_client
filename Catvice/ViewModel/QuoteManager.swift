@@ -20,7 +20,7 @@ class QuoteManager : ObservableObject   {
     }
     
     func fetch() {
-        guard let url = URL(string: "https://type.fit/api/quotes") else {
+        guard let url = URL(string: "https://catvice.herokuapp.com/Advice/advice.json") else {
             return
         }
         
